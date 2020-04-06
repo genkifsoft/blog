@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/login', 'CustomerController@login');
+    Route::post('/login', 'CustomerController@postLogin');
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::get('/', 'CustomerController@index');
+    });
 });

@@ -71,9 +71,10 @@ class Handler extends ExceptionHandler
                 $handerError->setVerifyCode(STATUS_401);
                 return $handerError->toJson();
             } else {
-                $handerError->setMessageStatus('TOKEN_NOT_FOUND');
-                $handerError->setVerifyCode(STATUS_401);
-                return $handerError->toJson();
+                return redirect('admin/login');
+                // $handerError->setMessageStatus('TOKEN_NOT_FOUND');
+                // $handerError->setVerifyCode(STATUS_401);
+                // return $handerError->toJson();
             }
         }
         if ($exception->getMessage() === 'Token not provided')
